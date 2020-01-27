@@ -19,18 +19,10 @@ function ArtTitle($loc) {
  * LoadArtViewHeader prints the artView header
  */
 function LoadArtViewHeader($title) {
+	BasicHEADBegin(PageTitle($title));
+	BasicHEADEnd();
 ?>
 
-<!DOCTYPE html>
-<html id="html">
-<head>
-	<meta charset="utf-8">
-	<title><?php echo $title; ?></title>
-	<link rel="stylesheet" href="/css/myStyles.css">
-	<link rel="stylesheet" href="/js/highlight/styles/isbl-editor-light.my.css">
-	<script src="/js/include.js"></script>
-	<script src="/js/highlight/highlight.pack.js"></script>
-</head>
 <body>
 	<?php LoadHeader(); ?>
 	<div class="mybox" id="box">

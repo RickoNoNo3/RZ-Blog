@@ -29,8 +29,8 @@ function BasicHEADBegin($pagetitle) {
 <head>
 	<meta charset="utf-8">
 	<title><?php echo $pagetitle; ?></title>
-	<link rel="stylesheet" href="/css/myStyles.css">
-	<link rel="stylesheet" href="/js/highlight/styles/isbl-editor-light.my.css">
+	<link rel="stylesheet" href="<?php echo $GLOBALS['MYSTYLE']; ?>">
+	<link rel="stylesheet" href="<?php echo $GLOBALS['HIGHLIGHTSTYLE']; ?>">
 	<script src="/js/include.js"></script>
 	<script src="/js/highlight/highlight.pack.js"></script>
 

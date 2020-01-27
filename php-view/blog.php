@@ -4,7 +4,7 @@ BasicHEADBegin(PageTitle('文章列表'));
 ?>
 <style>
 #list{
-	border-top: 1px solid rgb(200, 150, 50);
+	border-top: 1px solid #003530;
 	list-style: none!important;
 	padding: 0;
 }
@@ -12,32 +12,34 @@ BasicHEADBegin(PageTitle('文章列表'));
 	text-decoration: none;
 }
 #list img{
-	width: 15px;
+	width: 17px;
 }
 #list li{
 	font-size: 20px;
 	width: 100%;
 	padding: 0;
-	border: 1px solid rgb(200, 150, 50);
+	border: 1px solid #003530;
 	border-top: 0;
 	border-left: 0;
 	display: table;
 }
 #list li:hover{
-	background-color: rgba(120, 80, 20, 0.3);
+	background-color: rgba(10, 80, 120, 0.3);
 }
 #list .listrow{
 	clear: both;
 	display: block;
 	color: black;
 	display: table-row;
+	height: 30px;
+	line-height: 30px;
 	width: 100;
 }
 #list .lodd{
-	background-color: rgba(180, 130, 80, 0.15);
+	background-color: rgba(80, 130, 80, 0.15);
 }
 #list .leven{
-	background-color: rgba(250, 220, 150, 0.15);
+	background-color: rgba(50, 220, 150, 0.15);
 }
 #list .icon{
 	width: 40px;
@@ -52,7 +54,7 @@ BasicHEADBegin(PageTitle('文章列表'));
 	/* float: left; */
 }
 #list .time{
-	/* border-left: 1px solid rgb(200, 150, 50); */
+	/* border-left: 1px solid #003530; */
 	padding-right: 2%;
 	width: 18%;
 	text-align: right;
