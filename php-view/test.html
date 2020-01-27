@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html id="html">
+<head>
+<meta charset="utf-8">
+<title>MyBlog</title>
+<link rel="stylesheet" href="/css/myStyles.css">
+<link rel="stylesheet" href="/js/highlight/styles/isbl-editor-light.my.css">
+<script src="/js/showdown/dist/showdown.min.js"></script>
+<script src="/js/include.js"></script>
+<script src="/js/highlight/highlight.pack.js"></script>
+</head>
+<body id="body">
+	<div class="mybox">
+		<div class="mytitle" id="title">这个页面仅供测试</div>
+		<ul id="list"></ul>
+		<div class="mycontent" id="content"><pre>
+	这个页面就是简单测试一下我HTML写博客应该怎么写，如果你发现了这个页面说明你已经了解我的博客架构了，有什么建议或意见请提给我。
+	这个页面就是简单测试一下我HTML写博客应该怎么写，如果你发现了这个页面说明你已经了解我的博客架构了，有什么建议或意见请提给我。
+	这个页面就是简单测试一下我HTML写博客应该怎么写，如果你发现了这个页面说明你已经了解我的博客架构了，有什么建议或意见请提给我。
+	这个页面就是简单测试一下我HTML写博客应该怎么写，如果你发现了这个页面说明你已经了解我的博客架构了，有什么建议或意见请提给我。
+<code id="mycode1"></code>
+	这个页面就是简单测试一下我HTML写博客应该怎么写，如果你发现了这个页面说明你已经了解我的博客架构了，有什么建议或意见请提给我。这个页面就是简单测试一下我HTML写博客应该怎么写，如果你发现了这个页面说明你已经了解我的博客架构了，有什么建议或意见请提给我。这个页面就是简单测试一下我HTML写博客应该怎么写，如果你发现了这个页面说明你已经了解我的博客架构了，有什么建议或意见请提给我。这个页面就是简单测试一下我HTML写博客应该怎么写，如果你发现了这个页面说明你已经了解我的博客架构了，有什么建议或意见请提给我。
+<code id="mycode2"></code>
+	这个页面就是简单测试一下我HTML写博客应该怎么写，如果你发现了这个页面说明你已经了解我的博客架构了，有什么建议或意见请提给我。这个页面就是简单测试一下我HTML写博客应该怎么写，如果你发现了这个页面说明你已经了解我的博客架构了，有什么建议或意见请提给我。这个页面就是简单测试一下我HTML写博客应该怎么写，如果你发现了这个页面说明你已经了解我的博客架构了，有什么建议或意见请提给我。这个页面就是简单测试一下我HTML写博客应该怎么写，如果你发现了这个页面说明你已经了解我的博客架构了，有什么建议或意见请提给我。
+<code id="mycode3"></code>
+</pre>
+	</div></div>
+	<div id="o">
+		# Test
+		- test1
+		- test2
+		-	1. t1
+		-	2. t2
+			## Test in Test
+				that's it!
+		```
+		#include <iostream>
+		#include <stdio.h>
+		using namespace std;
+		```
+		+--------+
+		|1  |  2|
+		+:-:|--:|
+		|3|4|
+		+------+
+	</div>
+	<div id="p"></div>
+</body>
+<script>
+getCode("test.c", "mycode1");
+getCode("js/include.js", "mycode2");
+getCode("index.html", "mycode3");
+var text = document.getElementById("o").value;
+var converter = new showdown.Converter();
+var html = converter.makeHtml(text);
+document.getElementById("p").innerHTML = html;
+</script>
+</html>

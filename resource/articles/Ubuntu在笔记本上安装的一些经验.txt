@@ -1,0 +1,14 @@
+﻿主要的问题就局限在显卡驱动这一个环节上。
+刚安好系统的时候，默认是不可能进入图形界面的。我们需要首先配置nomodeset模式。
+这里涉及到一点改grub的小细节，可以参考：
+https://blog.csdn.net/zhang_hui_cs/article/details/8570253
+也可以直接在grub引导器页面按e修改，添加nomodeset（顺便还学了一招：添加一个3就可以进入文本模式）。
+
+现在，应该可以顺利进入图形界面了，但是仍然有问题，在显示设置中，笔记本的内置显示器显示为了“Unknown Display”，未知的显示器，这说明显卡驱动使用的是兼容驱动，甚至连分辨率都不能调整！就别说今后使用时的性能了。
+所以接下来我们要做的就是：安装显卡驱动。
+
+我一年前曾经在centos上尝试使用官网下载.run文件进行安装，后来的结果非常惨烈。幸好现在ubuntu有了nvidia-prime，让我舒舒服服用上了双显卡。
+详情参考这里：
+https://blog.csdn.net/yan_chou/article/details/72847943
+
+接下来ubuntu就成功被驱起来了，还可以使用prime-select intel(nvidia)选择适合的显卡进行显示。
