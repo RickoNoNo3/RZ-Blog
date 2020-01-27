@@ -9,8 +9,8 @@ package main
 import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"blog/model"
-	"blog/view"
+	"github.com/RickoNoNo3/RZ-Blog/model"
+	"github.com/RickoNoNo3/RZ-Blog/view"
 )
 
 func ConListFile(c echo.Context) error {
