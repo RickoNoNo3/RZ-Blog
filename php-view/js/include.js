@@ -42,20 +42,6 @@ function xhrDoGet(filename, func1){
 	xhr.send();
 }
 
-function getCode(filename, codeid){
-	xhrDoGet(filename, function(res){
-		document.getElementById(codeid).textContent = res;
-		//hljs.initHighlighting();
-		hljs.highlightBlock(document.getElementById(codeid));
-	});
-}
-
-function getFile(filename, DOMid){
-	xhrDoGet(filename, function(res){
-		document.getElementById(DOMid).innerText= res;
-		hljs.highlightBlock(document.getElementById(DOMid));
-	});
-}
 function getQuery(name){
 	var reg = new RegExp(".*(^|&)" + name + "=([^&]*)($|&)", "i");
 	var res = top.location.search.substr(1).match(reg);
@@ -63,44 +49,15 @@ function getQuery(name){
 		return (res[2]);
 	return null;
 }
-function checkEssay(){
-	return (decodeURI(getQuery("loc")).substr(0, blogfix.length) == blogfix);
-}
-function drawFrame(frameid){
-	var loc = decodeURI(getQuery("loc"));
-	var frame1 = top.document.getElementById(frameid);
-	if(loc == "null")
-		loc = index;
-	if(checkEssay()){
-		loc = essayDir + loc.substr(5);
-		//console.log(loc);
-		var reg = new RegExp(".*(html|php|htm|aspx|jsp|xhtml|do)$", "i");
-		if(loc.match(reg) == null){
-			frame1.style.padding = '0 10%';
-			frame1.style.width = '80%';
-		}
-	}
-	frame1.src = loc;
-	if(loc == index){
-		top.document.title = blogName;
-		return true;
-	} else {
-		var reg = new RegExp(".*/(.*)[.][^./]*$", "i");
-		var title = loc.match(reg)[1];
-		top.document.title = title + " - " + blogName;
-	}
-}
 function getNowDir(){
 	var dir = decodeURI(getQuery("dir"));
 	if(dir == "null")
 		dir = "";
-	//return top.location.pathname.substring(5)
 	return dir;
 }
 function listDir(){
 	var list = window.document.getElementById("loclink");
 	var dirs = getNowDir().split('/');
-	console.log(dirs);
 	var nowdir = "";
 	list.innerHTML += '<a class="loclink" target="_top" href="/' + encodeURI(blog) + '">博客</a>';
 	for(var i = 0, len = dirs.length; i < len; i++){
@@ -113,23 +70,20 @@ function listDir(){
 function getNowHref(){
 	return top.location.protocol + "//" + top.location.hostname + ":" + top.location.port;
 }
-function gotoFile(filename, isDir){
-	if(isDir){
-		//console.log('I will open ' + filename);
-		top.location.href = '/blog.php?dir=' + encodeURI(filename);
-	} else {
-		//console.log('I will goto ' + filename);
-		// window.open("http://localhost:8888/view/" + encodeURI(filename));
-		window.open("/view/" + encodeURI(filename));
-	}
+function getHref(filename, isDir){
+	if(isDir)
+		href = '/blog.php?dir=' + encodeURI(filename);
+	else
+		href = "/view/" + encodeURI(filename) + '?dir=' + encodeURI(getNowDir());
+	return href;
 }
 function listFile(){
 	var list = window.document.getElementById("list");
 	var dir = getNowDir();
 	xhrDoGet("/list/" + dir, function(res){
 		var filelist = eval ("(" + res + ")");
-		//console.log(filelist);
 		var cnt = 0;
+		window.document.getElementById('loading').style.display = "none";
 		for(var k in filelist){
 			// 初始化新file
 			cnt++;
@@ -141,26 +95,20 @@ function listFile(){
 			// 构造元素
 			var liclass = '<li ' + (cnt % 2 ? 'class="lodd"' : 'class="leven"') + '>';
 			var divicon = '<div class="icon"><img src="/img/' + (fileisDir ? fordericon : fileicon) + '" /></div>';
-			var aonclick = "gotoFile('" + getNowDir() + filename + "', " + fileisDir + ");";
+			var href = getHref(getNowDir() + filename, fileisDir);
 			// 消除网页文件扩展名(破坏性)
 			if(!fileisDir){
-				var reg = new RegExp("(.*)[.](md|html|php|htm|aspx|jsp|xhtml)$", "i");
+				var reg = new RegExp("(.*)[.](md|html|php|htm|aspx|jsp|xhtml|c|cpp|css|js|txt|go)$", "i");
 				var march1 = filename.match(reg);
 				if(march1 != null)
 					filename = march1[1];
 			}
 			// 渲染html
-			var innerHTML1;
-			innerHTML1 = liclass + '<a class="listrow" href="javascript:void(0);" onclick="' + aonclick + '">' + divicon + '<div class="name">' + filename + '</div>' + '<div class="time">' + filetime + '</div></a></li>'
-			list.innerHTML += innerHTML1;
+			list.innerHTML += liclass + '<a class="listrow" href="' + href + '">' + divicon + '<div class="name">' + filename + '</div>' + '<div class="time">' + filetime + '</div></a></li>'
 		}
 	});
 }
-function aclose(){
-	document.getElementById("mycover").innerHTML = '';
-}
 function doSearch(stextid){
-	document.getElementById("mycover").innerHTML = '<table class="coverl" onclick="aclose()"></table><div class="tanchuang">这是一个弹窗<br><button style="margin: 0 20px; width: 60%;" type="button" id="sbutton" value="结束" onclick="aclose();">结束</button></div>';
 	if(stextid == null)
 		return false;
 	var stext = stextid.value;

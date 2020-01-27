@@ -49,11 +49,11 @@ function BasicHEADEnd() {
 }
 
 /* ------------------------------
- * LoadHeader prints the  header
+ * LoadHeader prints the header and bganime
  */
 function LoadHeader() {
 ?>
-<div class="mynav">
+	<div class="mynav">
 		<ul class="mymenubar">
 		<li class="mymenuli"><a class="mymenu" href="/">主页</a></li>
 		<li class="mymenuli"><a class="mymenu" href="/blog.php">博客</a></li>
@@ -61,6 +61,9 @@ function LoadHeader() {
 		</ul>
 		<div class="mynavicon"><img src="/img/navicon.png" width="50px" height="50px" alt="" /></div>
 	</div>
+	<!--<iframe src="/lib/bganime.php" style="top:0;left:0;position:fixed;width:100%;height:100%;border:0;"></iframe>-->
+	<iframe src="http://v.bootstrapmb.com/2019/12/dwffm6814/" style="top:0;left:0;position:fixed;width:100%;height:100%;border:0;opacity:0.15;z-index:-1;"></iframe>
+	<!--<div style="top:0;left:0;position:fixed;width:100%;height:100%;background-color:black;opacity:0.8;"></div>-->
 
 <?php
 }

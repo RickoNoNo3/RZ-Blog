@@ -25,6 +25,10 @@ function LoadArtViewHeader($title) {
 
 <body>
 	<?php LoadHeader(); ?>
+	<div class="mybox reverse">
+		<div id="loclink" style="">当前位置：</div>
+		<script>listDir();</script>
+	</div>
 	<div class="mybox" id="box">
 	<div class="mycontent" id="content">
 		<div class="mytitle" id="title"><?php echo $title; ?></div>

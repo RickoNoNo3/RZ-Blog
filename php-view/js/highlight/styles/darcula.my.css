@@ -6,7 +6,8 @@ Darcula color scheme from the JetBrains family of IDEs
 
 
 .hljs {
-  border-left: 10px solid rgb(50,150,80);
+  border-left: 10px solid #959500;
+  /*border-left: 10px solid rgb(50,150,80);*/
   margin: 5px 20px 5px 20px;
   display: block;
   overflow-x: auto;
