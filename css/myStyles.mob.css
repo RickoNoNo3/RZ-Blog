@@ -1,0 +1,370 @@
+/* myStyles */
+/* 与桌面版区别主要有:
+     三角元件的大小
+     各元素的边框大小
+	 字体大小
+*/
+*{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+div{
+	color: #C8C8C8;
+	font-size: 15px;
+}
+.myloc, .myloc *{
+	font-size: 12px;
+}
+.hljs, .hljs *{
+	font-size: 15px;
+	margin: 0!important;
+}
+h1, h2, h3, h4, h5, h6{
+	padding: 0;
+	margin: 0;
+}
+.mytitle{
+	font-size: 28px;
+	font-weight: bold;
+}
+h1{
+	font-size: 28px;
+}
+h2{
+	font-size: 26px;
+}
+h2:before{
+	content: "　";
+}
+h3{
+	font-size: 24px;
+}
+h3:before{
+	content: "　　";
+}
+h4{
+	font-size: 22px;
+}
+h4:before{
+	content: "　　　";
+}
+h5{
+	font-size: 20px;
+}
+h5:before{
+	content: "　　　　";
+}
+h6{
+	font-size: 18px;
+}
+h6:before{
+	content: "　　　　　";
+}
+p{
+	font-size: 14px;
+}
+p:before{
+	content: "　　";
+}
+code, code *{
+	font-size: 12px!important;
+	/*font-family: Consolas, monospace, Monaco!important;*/
+}
+code:not(.hljs):not(.language-text){
+	font-size: 10px;
+	display: inline-block;
+	width: max-content;
+	background-color: #959500!important;
+	color: white;
+	margin: 0 3px;
+	padding: 0 14px;
+	clip-path: polygon(14px 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+	-webkit-clip-path: polygon(14px 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+}
+code.language-text{
+	display: block;
+	margin-left: 50px;
+}
+.mycontent li{
+	font-weight: bold;
+	font-size: 10px;
+	margin-left: 10px;
+}
+.mycontent, .mycontent *{
+	/*font-family: 微软雅黑, 黑体, monospace, Monaco;*/
+}
+html{
+	margin: 0;
+	padding: 0;
+	/*background-image: url("../img/bg.jpg");
+	/*background-repeat: repeat; /* 用于小图 */
+	/*background-size: 100%; /* 用于大图 */
+	/*background-attachment: fixed;
+	/*background-color: rgb(200, 200, 100);*/
+	background-color: black;
+}
+body{
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background-color: transparent;
+}
+body::before{
+	content: "";
+	display: block;
+	height: 60px;
+}
+#BG{
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	opacity: 0.7;
+	z-index: -1;
+}
+#BODYBLANK{
+	display: none;
+}
+a{
+	color: white;
+	text-decoration: none;
+}
+pre{
+	margin: 0;
+	/*word-wrap: break-word;
+	white-space: pre-wrap;*/
+}
+latex{
+	display: block;
+}
+latex *{
+	padding: 0!important;
+	margin: 0!important;
+}
+latex svg{
+	width: 100%;
+}
+h1 a{
+	text-align: center;
+	display: block;
+	width: max-content;
+	margin: 0 auto;
+}
+.myfoot{
+	display: none;
+}
+.mynav{
+	transition: top ease-in 0.2s;
+	position: fixed;
+	top: -150px;
+	left: 0px;
+	height: 200px;
+	filter: drop-shadow(-2px 2px 10px black);
+	width: 50px; /*600px;*/
+	z-index: 999;
+}
+@keyframes menudisplay{
+	0%{
+		opacity: 0;
+	}
+	50%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+.mynav:hover{
+	/*height: 240px;*/
+	top: 0;
+	transition: top ease-in 0.2s;
+}
+.mynavline {
+	display: block;
+	height: 150px;
+	width: 50px;
+	background-color: #959500!important;
+}
+.mynavicon{
+	position: relative;
+	border-style: solid;
+	border-width: 50px 50px 0 0;
+	border-color: #959500 transparent transparent transparent!important;
+}
+.mynav:hover .mymenubar{
+	animation: menudisplay 0.5s;
+	opacity: 1;
+	display: block;
+}
+.mymenubar, .mymenubar li{
+	font-weight: 400;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.mymenubar{
+	opacity: 0;
+	display: none;
+	top: 0;
+}
+.mymenuli{
+	height: 49px;
+	border-bottom: 1px solid #CCC;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+	transition: background-color ease-in 0.1s;
+}
+.mymenuli:hover{
+	background-color: #222222;
+	transition: background-color ease-in 0.1s;
+}
+.mymenu{
+	height: 49px;
+	line-height: 49px;
+	width: 50px;
+	margin: 0 auto;
+	font-size: 14px;
+	display: inline-block;
+}
+.line{
+	display: block;
+	margin: 10px 5px;
+	border-bottom: 1px solid #888;
+	height: 0;
+}
+.myloc *{
+	padding: 0;
+	margin: 0;
+}
+.myloc{
+	position: fixed;
+	top: 0;
+	left: 0;
+	filter: drop-shadow(0 0 10px black);
+	z-index: 998;
+}
+.mylocbar{
+	width: max-content;
+	height: calc(35px - 12px);
+	line-height: calc(35px - 12px);
+	padding: 0 30px 0 50px;
+	border-bottom: 12px solid #959500!important;
+	background-color: rgba(45,45,40,0.5);
+	clip-path: polygon(0 0, 0 100%, calc(100% - 35px) 100%, 100% 0);
+	-webkit-clip-path: polygon(0 0, 0 100%, calc(100% - 35px) 100%, 100% 0);
+}
+#loclink{
+	text-align: left;
+}
+#loclink a, .mycontent a{
+	color: yellow;
+	text-decoration: underline;
+}
+.mycontent{
+	display: block;
+	width: calc(100% - 10px);
+	font-size: 14px;
+	margin: 0 0 0 0;
+	padding: 5px 5px 20px 5px;
+	word-wrap:break-word;
+	overflow:hidden;
+}
+.mycontent ul{
+	list-style-type: circle;
+	list-style-position: outside;
+	/*padding-left: 18px;*/
+}
+.mycontent p{
+	margin: 5px 0;
+	padding: 0;
+}
+.mybox{
+	position: relative;
+	width: calc(100% - 20px);
+	margin: 0 0 0 20px;
+	background-color: rgba(45,45,40,0.5);
+	filter: drop-shadow(0 0 10px black);
+	min-height: 100%;
+}
+.mybox::before{
+	content: "";
+	position: absolute;
+	border-style: solid;
+	border-width: 50px 50px 0 0;
+	border-color: #959500 transparent transparent transparent!important;
+}
+.mytitle{
+	color: #C8C8C8;
+	width: 100%;
+	display: block;
+	text-align: center;
+}
+.mytitle::before{
+	content: "　";
+}
+.myblog{
+	top: 0;
+	right: 0;
+	width: 100%;
+}
+#list{
+	list-style: none!important;
+	width: 100%;
+	padding: 0;
+	display: table;
+}
+#list a{
+	transition: background-color ease-in 0.2s;
+	display: table-row;
+	font-weight: 400;
+	font-size: 20px;
+	height: 30px;
+	line-height: 30px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #003530;
+	border-top: 0;
+	text-decoration: none;
+}
+#list a:hover{
+	background-color: rgba(0,0,0,0.5);
+	transition: background-color ease-in 0.1s;
+}
+#list .lodd{
+	background-color: rgba(90, 90, 90, 0.2);
+}
+#list .leven{
+	background-color: rgba(150, 150, 150, 0.2);
+}
+#list .name{
+	position: relative;
+	text-align: left;
+	display: table-cell;
+	padding-left: 20px;
+}
+#list .name i{
+	display: block;
+	position: absolute;
+	font-size: 20px;
+	line-height: 33px;
+	left: 0;
+}
+#list .name{
+	text-align: left;
+	display: table-cell;
+}
+#list .time{
+	text-align: right;
+	display: table-cell;
+}
+.notice{
+	text-align: center;
+	font-size: 20px;
+	line-height: 50px;
+}
