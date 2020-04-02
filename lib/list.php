@@ -31,6 +31,8 @@ function ListDir(string $dirloc) {
 	if (!$filenames) {
 		echo '<script>location.href="/error";</script>';
 		return false;
+	} else {
+		echo '<h1>文章列表</h1>';
 	}
 
 	// make file list
@@ -65,8 +67,9 @@ function ListDir(string $dirloc) {
 			<a class="<?php
 				echo ($i % 2 ? 'leven' : 'lodd'); ?>"
 				href="<?php
-					echo '/view/' . $dirloc . $file->cutFilename() . ($file->isdir ? '/' : ''); ?>">
-				<div class="name">
+					echo '/view/' . $dirloc . $file->cutFilename() . ($file->isdir ? '/' : ''); ?>"
+				style="color:white; font-size:17px;">
+				<span class="name">
 					<?php //if (!$GLOBALS['ISIE']) : ?>
 					<i class="material-icons">
 						<?php
@@ -75,10 +78,10 @@ function ListDir(string $dirloc) {
 					</i>
 					<?php //endif; ?>
 					<?php echo $file->cutFilename(); ?>
-				</div>
-				<div class="time">
+				</span>
+				<span class="time">
 					<?php echo date('Y/m/d', $file->time) . ''; ?>
-				</div>
+				</span>
 			</a>
 <?php
 		} // foreach

@@ -57,8 +57,6 @@ LoadHTMLBegin(PageTitle());
 	<div class="welcometitle">欢迎来到R崽的博客</div>
 	<div class="mybox <?php if (!$ISMOBILE) echo 'welcomebox1'; ?>">
 		<div class="mycontent">
-			<div class="mytitle">建博客的一些心得</div>
-			<div class="line"></div>
 			<?php
 			MdParser('../建博客的一些心得.md');
 			?>

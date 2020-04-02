@@ -28,7 +28,7 @@ body{
 }
 </style>
 <?php LoadHTMLBodyBegin('?'); ?>
-	<img id="icon1" src="/img/navicon.png"></img>
+	<img id="icon1" src="/img/icon.png"></img>
 	<div id="title">
 		页面走丢了哦<br />
 		<a id="goHome" href="/" target="_top">返回主页</a>

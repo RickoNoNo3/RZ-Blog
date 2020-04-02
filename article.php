@@ -21,7 +21,7 @@ if (substr($loc, 0, 6) === '/view/') {
 	// is dir or file
 	if (strlen($loc) === 0 || strrpos($loc, '/') === strlen($loc) - 1) {
 		// draw list
-		LoadArtViewBegin('文章列表');
+		LoadArtViewBegin('文章列表', false);
 		ListDir($loc);
 	} else {
 		// suffix

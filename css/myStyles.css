@@ -9,43 +9,57 @@ div{
 .hljs, .hljs *{
 	font-size: 18px;
 }
+h1, h2, h3, h4, h5, h6{
+	padding: 5px 0;
+	margin: 0;
+}
 h1{
 	font-size: 40px;
+	width: 100%;
+	display: block;
+	text-align: center;
+}
+h1::after{
+	content: "";
+	display: block;
+	border-bottom: 1px solid #888;
+	margin: 15px 5px;
+	height: 0;
 }
 h2{
 	font-size: 37px;
 }
 h2:before{
-	content: "　";
+	content: "";
 }
 h3{
-	font-size: 34px;
+	font-size: 32px;
 }
 h3:before{
-	content: "　　";
+	content: "　";
 }
 h4{
-	font-size: 31px;
+	font-size: 26px;
 }
 h4:before{
-	content: "　　　";
+	content: "　　";
 }
 h5{
-	font-size: 27px;
-}
-h5:before{
-	content: "　　　　";
-}
-h6{
 	font-size: 24px;
 }
-h6:before{
-	content: "　　　　　";
+h5:before{
+	content: "　　　";
 }
-p{
+h6{
+	font-size: 22px;
+}
+h6:before{
+	content: "　　　　";
+}
+.mycontent p{
 	font-size: 20px;
 }
-p:before{
+.mycontent p:before{
 	content: "　　";
 }
 code, code *{
@@ -71,10 +85,6 @@ code.language-text{
 	font-weight: bold;
 	font-size: 20px;
 	margin-left: 20px;
-}
-.mytitle{
-	font-size: 35px;
-	font-weight: bold;
 }
 .mycontent, .mycontent *{
 	/*font-family: 微软雅黑, 黑体, monospace, Monaco;*/
@@ -132,29 +142,30 @@ latex{
 latex svg{
 	width: 100%;
 }
-h1 a{
+h2 a{
 	text-align: center;
 	display: block;
 	width: max-content;
 	margin: 0 auto;
 }
-.myfoot{
+footer{
 	position: relative;
 	display: block;
 	right: 0;
 	bottom: 0;
-	flex: 0 0 auto;
+	flex: none;
 	margin: 5px auto 0;
 	padding: 2px 10px;
 	width: max-content;
 	height: 25px;
 	font-size: 17px;
 	background-color: #959500!important;
+	color: white!important;
 	text-align: center;
 	z-index: 999;
 	box-shadow: 0 0 10px black;
 }
-.myfoot a{
+footer a{
 	text-decoration: underline;
 }
 .mynav{
@@ -221,7 +232,7 @@ h1 a{
 	text-align: center;
 	transition: background-color ease-in 0.1s;
 }
-.mymenuli:hover{
+.mymenuli:hover, button:hover{
 	background-color: #222222;
 	transition: background-color ease-in 0.1s;
 }
@@ -327,20 +338,73 @@ h1 a{
 	border-width: 60px 60px 0 0;
 	border-color: #959500 transparent transparent transparent!important;
 }
-.mytitle{
-	color: #C8C8C8;
-	width: 100%;
-	display: block;
-	text-align: center;
-}
-.mytitle::before{
-	/* 桌面端应当居中, 无需对三角装饰补位 */
-	/*content: "　";*/
-}
 .myblog{
 	top: 0;
 	right: 0;
 	width: 100%;
+}
+#userlogin{
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	border-style: solid;
+	border-width: 0 0 60px 60px;
+	border-color: transparent transparent #959500 transparent!important;
+	filter: drop-shadow(0 0 10px black);
+}
+#loginWindow{
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 500;
+	background-color: rgba(10,10,10,0.3);
+}
+#loginWindowContent{
+	position: absolute;
+	display: block;
+	min-height: 100px;
+	width: 300px;
+	top: calc(50% - 100px);
+	left: calc(50% - 150px);
+	z-index: 501;
+	overflow: hidden;
+	color: #C8C8C8;
+}
+#loginWindowContent > *{
+	width: 100%;
+	text-align: center;
+	margin: 10px 0;
+}
+#loginWindowContent > p{
+	font-size: 20px;
+}
+#loginWindowContent > input{
+	height: 25px;
+	font-size: 22px;
+	margin-bottom: 10px;
+	background-color: transparent;
+	font-family:Consolas, monospace;
+	resize: none;
+	border: 0;
+}
+#loginWindowContent > div{
+	display: flex;
+	margin: 0;
+}
+#loginWindowContent button{
+	flex: auto;
+	width: 1px;
+	height: 25px;
+}
+button {
+	background-color: #959500;
+	border: 0;
+	border-radius: 0!important;
+	outline: 0;
+	color: white;
 }
 #list{
 	list-style: none!important;

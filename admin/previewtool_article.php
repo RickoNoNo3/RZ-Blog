@@ -32,13 +32,5 @@ if ($content) {
 		<?php MdParser($filename); ?>
 	</div>
 </body>
-<script>
-	if(checkIE()){
-		document.body.style.display = "block";
-	}
-	var codes = document.getElementsByTagName('code');
-	for (let i = 0; i < codes.length; ++i)
-		hljs.highlightBlock(codes[i]);
-</script>
 <?php
 }

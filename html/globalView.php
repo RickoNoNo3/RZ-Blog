@@ -48,11 +48,7 @@ function LoadHTMLBegin($pagetitle) {
 		<title><?php echo $pagetitle; ?></title>
 		<link rel="stylesheet" href="<?php
 			echo $GLOBALS[($GLOBALS['ISMOBILE'] ? 'MYSTYLE_MOBILE' : 'MYSTYLE')]; ?>">
-		<link rel="stylesheet" href="<?php
-			echo $GLOBALS['HIGHLIGHTSTYLE']; ?>">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<script src="/js/include.js"></script>
-		<script src="/js/highlight/highlight.pack.js"></script>
 <?php
 }
 
@@ -94,17 +90,29 @@ function LoadHTMLBodyBegin($locStr) {
  */
 function LoadHTMLBodyEnd() {
 ?>
+	<div id="userlogin" onclick="login();"></div>
+	<div id="loginWindow"> 
+		<div id="loginWindowContent" class="mybox">
+			<p>吃葡萄皮</p>
+			<input type="password" id="loginPSWD">
+			<div>
+				<button value="Cancel" onclick="unlogin();">Cancel</button>
+				<div style="height:100%;width:1px;"></div>
+				<button value="OK" onclick="dologin();">OK</button>
+			</div>
+		</div>
+	</div>
 	<img id="BG" src="<?php
 		echo $GLOBALS['BGIMG']; ?>" />
 	<?php if (!$GLOBALS['ISIE']) : ?>
 	<div id="BODYBLANK"></div>
-	<div class="myfoot">
+	<footer>
 		<a href="/">R崽的博客</a>
 		&nbsp;&nbsp;|&nbsp;&nbsp;
 		<a href="/">开源软件声明</a>
 		&nbsp;&nbsp;|&nbsp;&nbsp;
 		Copyright © 2019 - 2020 R崽哗啦啦
-	</div>
+	</footer>
 	<?php endif; ?>
 <?php
 }
@@ -185,6 +193,19 @@ function LoadHTMLScript() {
 
 		window.addEventListener('resize', locRedraw);
 		locRedraw();
+
+		//-------------------
+		//  Login
+		//-------------------
+		function login() {
+			document.getElementById('loginWindow').style.display = 'block';
+		}
+		function unlogin() {
+			document.getElementById('loginWindow').style.display = 'none';
+		}
+		function dologin() {
+			location.href = '/login.php?pswd=' + document.getElementById('loginPSWD').value + '&href=' + location.href;
+		}
 
 		//-------------------
 		//  背景图相关
