@@ -1,7 +1,6 @@
 <!--404-->
 <?php
-require_once(dirname(__FILE__) . '/html/globalView.php');
-require_once(dirname(__FILE__) . '/lib/md.php');
+require_once(dirname(__FILE__) . '/view/globalView.php');
 LoadHTMLBegin(PageTitle());
 ?>
 <style>
