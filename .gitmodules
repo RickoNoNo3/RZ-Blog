@@ -1,0 +1,12 @@
+[submodule "Old/lib/parsedown-1.7.4"]
+	path = Old/lib/parsedown-1.7.4
+	url = https://github.com/erusev/parsedown.git
+	branch = 1.7.x
+[submodule "drawer/web/highlight"]
+	path = drawer/web/highlight
+	url = https://github.com/RickoNoNo3/highlight.js.git
+	branch = master
+[submodule "drawer/web/mathjax"]
+	path = drawer/web/mathjax
+	url = https://github.com/MathJax/mathjax.git
+	branch = master
