@@ -18,5 +18,6 @@ function MdParser($filename) {
 	}
 	$mdParser = new Parsedown();
 	echo $mdParser->text($file);
+	#echo @file_get_contents($GLOBALS['FILELOC'] . 'test.html');
 }
 

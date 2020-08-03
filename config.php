@@ -1,6 +1,6 @@
 <?php
 // debug conf
-$INDEBUG = false;
+$INDEBUG = true;
 
 // basic conf
 $BLOGTITLE = 'R崽的博客';
@@ -13,8 +13,8 @@ $HIGHLIGHTSTYLE = '/js/highlight/styles/darcula.my.css'; // '/js/highlight/style
 $ICONS = [
 	0 => 'description',
 	1 => 'class',
-//	0 => '/img/file.png',
-//	1 => '/img/folder.png',
+	//	0 => '/img/file.png',
+	//	1 => '/img/folder.png',
 ];
 
 
@@ -26,10 +26,12 @@ $ISMOBILE = CheckAgent();
 if (!$ISMOBILE) {
 	$ISMICROSOFT = HaveAgent(['edge', 'trident']);
 	$ISIE = HaveAgent(['trident']);
+} else {
+	$ISMICROSOFT = $ISIE = false;
 }
 
 if ($GLOBALS['INDEBUG']) {
-	ini_set('display_errors',1);
-	ini_set('display_startup_errors',1);
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
 	error_reporting(-1);
 }

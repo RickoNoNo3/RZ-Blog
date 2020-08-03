@@ -6,6 +6,7 @@
 	--themecolor-0: #AFAFAF;
 	--themecolor-1: #7D4b25;
 	--themecolor-2: #404040;
+	--themecolor-3: #C8C8C8;
 }
 *, ::before, ::after{
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -16,6 +17,7 @@
 }
 ::-webkit-scrollbar {
 	width: 10px;
+	height: 10px;
 	background-color: #404040;
 }
 *{
@@ -83,9 +85,6 @@ blockquote{
 	margin: 10px 15px;
 	padding: 8px 10px;
 }
-.MathJax_SVG_Display>.MathJax_SVG{
-	width: 100%;
-}
 .mycontent p{
 	font-size: 20px;
 }
@@ -129,7 +128,7 @@ code.language-text{
 	font-size: 14px;
 }
 .mycontent li{
-	font-weight: bold;
+	font-weight: 400;
 	font-size: 20px;
 	padding-left: 0;
 	margin-left: 20px;
@@ -185,6 +184,23 @@ a{
 	color: white;
 	text-decoration: none;
 }
+graph {
+	overflow-x: auto;
+	overflow-y: visible;
+	display: block;
+	max-width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	filter: invert(100%);
+}
+graph svg{
+	max-width: 100%;
+	height: unset;
+	height: max-content;
+}
+graph title+polygon[fill~="#ffffff"]{
+	opacity: 0;
+}
 /*pre{
 	word-wrap: break-word;
 	white-space: pre-wrap;
@@ -192,7 +208,10 @@ a{
 latex{
 	display: block;
 }
-latex svg{
+.MathJax_SVG_Display .MathJax_SVG{
+	width: 100%;
+}
+.MathJax_SVG_Display svg{
 	width: 100%;
 }
 h2 a{
@@ -337,7 +356,7 @@ h2 a{
 	width: 80%;
 	margin: 0 auto 20px auto;
 	filter: drop-shadow(0 0 10px black);
-	min-height: 100%;
+	min-height: 60px;
 	background-color: rgba(45,45,40,0.5);
 }
 .mybox::before{
@@ -407,6 +426,24 @@ footer>div{
 }
 footer>div>a{
 	text-decoration: underline;
+}
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	margin: 5px auto;
+	max-width: 80%;
+	background: rgba(0,0,0,0.4);
+}
+table th, table td {
+	padding: 5px;
+	border: 1px solid var(--themecolor-0);
+	font-family: 'Sarasa Term SC', 'Consolas', monospace !important;
+}
+table td[style~='center;'] {
+	font-weight: bold
+}
+table tr:nth-child(2n-1)>td {
+	background: rgba(100,100,100,0.1);
 }
 #userlogin{
 	position: fixed;
@@ -523,9 +560,25 @@ button {
 	line-height: 50px;
 }
 
+@media screen and (max-width: 900px) {
+	.MathJax_SVG_Display{
+		overflow-y: hidden;
+		overflow-x: auto;
+		padding: 10px 0;
+		margin: 0!important;
+		width: unset!important;
+		border: 5px solid #404040;
+		/*border-right: none;*/
+	}
+	.MathJax_SVG_Display svg{
+		width: unset;
+		min-width: calc(100% - 15px);
+		margin: 0 10px 0 5px;
+	}
+}
 @media print{
 	html {
-		background-color: transparent;
+		background-color: inherit;
 	}
 	body {
 		padding: 0;
@@ -563,8 +616,32 @@ button {
 	}
 	.mycontent .hljs {
 		background-color: inherit;
+		white-space: pre-wrap;
+		padding: 0;
+		border: none!important;
+		/* 支持以下语句的浏览器会忽略以上所有*/
+		display: contents;
 	}
 	.mycontent pre {
 		margin: 0;
+		padding: 5px;
+		white-space: pre-wrap;
+		word-break: break-all;
+		word-wrap: break-word;
+		background-color: #F9F9F9;
+	}
+	.mycontent table,
+	.mycontent table * {
+		background-color: transparent!important;
+	}
+	/* `...` 单行代码的特殊用法 */
+	code:not(.hljs):not(.language-text){
+		padding: 0 5px;
+		background-color: inherit;
+		clip-path: none;
+		border-bottom: 2px solid #404040;
+	}
+	graph {
+		filter: none;
 	}
 }

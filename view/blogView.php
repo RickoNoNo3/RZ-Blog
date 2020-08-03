@@ -72,37 +72,26 @@ function LoadBlogViewBegin($title, $isArt = true)
 				</h1>-->
 			<!--<div class="line"></div>-->
 			<!-- content start -->
-	<?php
-}
+		<?php
+	}
 
-/// ----------------------------------
-// LoadBlogViewEnd prints the footer
-// 
-function LoadBlogViewEnd()
-{
-	?>
-		<!-- content end -->
-	</div> <!-- mycontent -->
-</div> <!-- mybox -->
-<?php LoadHTMLBodyEnd(); ?>
-<?php LoadHTMLScript(); ?>
-<script>
+	/// ----------------------------------
+	// LoadBlogViewEnd prints the footer
+	// 
+	function LoadBlogViewEnd()
+	{
+		?>
+			<!-- content end -->
+		</div> <!-- mycontent -->
+	</div> <!-- mybox -->
+	<?php LoadHTMLBodyEnd(); ?>
+	<?php LoadHTMLScript(); ?>
 	<?php if ($GLOBALS['ISART']) : ?>
-		hljs.initHighlighting();
-
-		function loadText(texts) {
-			for (var i = 0; i < texts.length; ++i) {
-				if (texts[i].innerHTML == null)
-					continue;
-				texts[i].innerHTML = texts[i].innerHTML.replace(/([^\\])\$(.+?)\$/g, '$1\\($2\\)');
-				texts[i].innerHTML = texts[i].innerHTML.replace(/\\\$/, '\$');
-			}
-		}
-		loadText(document.getElementsByTagName('p'));
-		loadText(document.getElementsByTagName('li'));
+		<script type="text/javascript" src="/js/load.js"></script>
+		<script>
+			LoadArtPage();
+		</script>
 	<?php endif; ?>
-</script>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
-<?php LoadHTMLEnd(); ?>
+	<?php LoadHTMLEnd(); ?>
 <?php
-}
+	}

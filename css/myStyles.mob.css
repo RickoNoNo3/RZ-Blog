@@ -4,6 +4,7 @@
      各元素的边框大小
 	 字体大小
 */
+@media screen {
 div{
 	font-size: 15px;
 }
@@ -40,6 +41,7 @@ h5{
 }
 .mycontent p{
 	font-size: 15px;
+	margin-top: 0;
 }
 i {
 	font-size: 16px!important;
@@ -73,6 +75,9 @@ body::before{
 }
 pre{
 	margin: 0;
+}
+.MathJax_SVG_Display{
+	border-right: none;
 }
 h2 a{
 	margin: 0 auto;
@@ -116,13 +121,14 @@ h2 a{
 .mybox{
 	width: calc(100% - 20px);
 	margin: 0 0 0 20px;
+	min-height: 50px;
 }
 .mybox::before{
 	border-width: 50px 50px 0 0;
 }
 .mycontent{
 	width: calc(100% - 10px);
-	margin: 5px 0 10px 10px;
+	margin: 10px 0 10px 10px;
 }
 .mycontent ul, .mycontent ol {
 	padding-left: 16px;
@@ -157,4 +163,7 @@ footer{
 }
 .notice{
 	line-height: 40px;
+}
+
+/* media */
 }
