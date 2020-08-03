@@ -7,7 +7,8 @@ require_once(dirname(__FILE__) . '/parsedown-1.7.4/Parsedown.php');
 require_once(dirname(__FILE__) . '/../config.php');
 
 function MdParser($filename) {
-	$file = @file_get_contents($GLOBALS['FILELOC'] . $filename);
+	$file = @file_get_contents($GLOBALS['FILELOC'] . urldecode($filename));
+
 	if ($file === false) {
 		if ($GLOBALS['INDEBUG'])
 			printf("无法打开文件: %s", $filename);

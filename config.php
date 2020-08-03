@@ -4,7 +4,7 @@ $INDEBUG = false;
 
 // basic conf
 $BLOGTITLE = 'R崽的博客';
-$FILELOC = '/root/blog/' . 'resource/articles/';
+$FILELOC = '/root/blog/' . 'resources/articles/';
 
 // style conf
 $MYSTYLE = '/css/myStyles.css';
@@ -16,7 +16,6 @@ $ICONS = [
 //	0 => '/img/file.png',
 //	1 => '/img/folder.png',
 ];
-$BGIMG = 'http://pic1.win4000.com/wallpaper/2019-03-26/5c99b7fc7d50e.jpg';
 
 
 
@@ -24,8 +23,10 @@ $BGIMG = 'http://pic1.win4000.com/wallpaper/2019-03-26/5c99b7fc7d50e.jpg';
 #------ NO EDITING AFTER THIS LINE!!! ------
 require_once(dirname(__FILE__) . '/lib/checkAgent.php');
 $ISMOBILE = CheckAgent();
-$ISMICROSOFT = HaveAgent(['edge', 'trident']);
-$ISIE = HaveAgent(['trident']);
+if (!$ISMOBILE) {
+	$ISMICROSOFT = HaveAgent(['edge', 'trident']);
+	$ISIE = HaveAgent(['trident']);
+}
 
 if ($GLOBALS['INDEBUG']) {
 	ini_set('display_errors',1);

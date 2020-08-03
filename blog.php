@@ -11,27 +11,27 @@
 #   }
 #
 
-require_once(dirname(__FILE__) . '/html/artView.php');
+require_once(dirname(__FILE__) . '/view/blogView.php');
 require_once(dirname(__FILE__) . '/lib/md.php');
 require_once(dirname(__FILE__) . '/lib/list.php');
 
 $loc = urldecode($_SERVER['REQUEST_URI']);
-if (substr($loc, 0, 6) === '/view/') {
+if (substr($loc, 0, 6) === '/blog/') {
 	$loc = substr($loc, 6);
 	// is dir or file
 	if (strlen($loc) === 0 || strrpos($loc, '/') === strlen($loc) - 1) {
 		// draw list
-		LoadArtViewBegin('文章列表', false);
+		LoadBlogViewBegin('文章列表', false);
 		ListDir($loc);
 	} else {
 		// suffix
-		LoadArtViewBegin(GetTitle($loc));
-		if (strrchr($loc, '.') === false || $loc[0] === '.')
+		LoadBlogViewBegin(GetTitle($loc));
+		if (strrpos($loc, '.') === false || in_array(substr($loc, strrpos($loc, '.') + 1), ['txt', 'markdown', 'html', 'php'], true) === false)
 			$loc .= '.md';
 		// draw markdown
 		MdParser($loc);
 	}
-	LoadArtViewEnd();
+	LoadBlogViewEnd();
 } else {
 	echo '<script>location.href="/error";</script>';
 }
