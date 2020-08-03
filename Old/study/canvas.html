@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>Canvas</title>
+	<style type="text/css">
+		body {
+			display: flex;
+			flex-direction: column;
+			margin: 0;
+			min-height: 100vh;
+		}
+
+		body>div {
+			flex: auto;
+		}
+
+		#Content {
+			flex: 1 0 0;
+			display: flex;
+			flex-direction: row;
+		}
+
+		#Content>div {
+			flex: auto;
+			text-align: center;
+		}
+
+		#cvs {
+			flex: none;
+			height: 80vh;
+			width: 80vw;
+			box-shadow: 0 0 1rem black;
+			border-radius: 15px;
+		}
+	</style>
+</head>
+
+<body>
+	<div></div>
+	<div id="Content">
+		<div>
+		</div>
+		<canvas id="cvs"></canvas>
+		<div>
+		</div>
+	</div>
+	<div></div>
+	<script type="text/javascript">
+		var cvs = document.querySelector('canvas');
+		var ctx = cvs.getContext("2d");
+		var width = cvs.offsetWidth;
+		var height = cvs.offsetHeight;
+		function resizeCvs() {
+			width = cvs.offsetWidth;
+			height = cvs.offsetHeight;
+			cvs.setAttribute('width', width.toString());
+			cvs.setAttribute('height', height.toString());
+		}
+		resizeCvs();
+		window.onresize = resizeCvs;
+
+		var img = new Image();
+		img.src = "http://120.78.67.48:8888/image/head/2.jpg";
+		img.onload = function () {
+			var intervalTime = 1500;
+			function drawImg(scaleIndex, timeout) {
+				setTimeout(function () {
+					initDraw(Math.PI);
+					let imgWidth = Math.pow(scaleIndex, 2) + 200;
+					let imgHeight = Math.pow(scaleIndex, 2) + 200;
+					let x = (width - imgWidth) / 2;
+					let y = (height - imgHeight) / 2;
+					ctx.save();
+					ctx.beginPath();
+					ctx.arc(x + imgWidth / 2, y + imgHeight / 2, imgWidth / 2, 0, 2 * Math.PI);
+					ctx.clip();
+					ctx.drawImage(img, x, y, imgWidth, imgHeight);
+					ctx.closePath();
+					ctx.restore();
+				}, timeout);
+			}
+			function imgAnima() {
+				var stepTime = intervalTime / 100
+				for (let i = 0; i < 50; i++) {
+					drawImg(i / 10.0, i * stepTime);
+				}
+				for (let i = 50; i > 0; i--) {
+					drawImg(i / 10.0, intervalTime / 2 + (50 - i) * stepTime);
+				}
+			}
+			imgAnima();
+			setInterval(imgAnima, intervalTime);
+		};
+
+		let headOffset = 9999999999999;
+		setInterval(function () {
+			headOffset -= 0.1;
+			if (headOffset <= -9999999999999)
+				headOffset = 9999999999999;
+		}, 10);
+		function initDraw() {
+			ctx.clearRect(0, 0, width, height);
+			ctx.fillStyle = "rgba(230,230,200,0.5)";
+			ctx.fillRect(0, 0, width, height);
+
+			ctx.beginPath();
+			ctx.moveTo(width, 50);
+			ctx.lineTo(width, 0);
+			ctx.lineTo(0, 0);
+			ctx.lineTo(0, 50);
+			for (let i = 0; i <= width; ++i) {
+				ctx.lineTo(i, 5 * Math.cos(headOffset + i / 10) + 50);
+			}
+			ctx.fillStyle = "rgba(80,80,80,0.5)";
+			ctx.fill();
+			ctx.save();
+			ctx.closePath();
+
+			ctx.beginPath();
+			ctx.moveTo(width, height - 30);
+			ctx.lineTo(width, height);
+			ctx.lineTo(0, height);
+			ctx.lineTo(0, height - 30);
+			ctx.lineTo(width, height - 30);
+			ctx.fillStyle = "rgba(150,150,80,0.5)";
+			ctx.fill();
+			ctx.save();
+			ctx.closePath();
+		};
+
+		initDraw();
+	</script>
+</body>
+
+</html>
